@@ -25,10 +25,10 @@ class FormTest extends TestCase
             "Accept_alle_voorwaarden" => true
         ];
 
-        // Formu gönderin
+
         $response = $this->post('/save_register', $formData);
 
-        // Yanıtın başarılı olduğunu kontrol edin
+   
         $response->assertStatus(200); 
     }
 
@@ -52,22 +52,22 @@ public function it_can_download_a_pdf_file()
 /** @test */
 public function home_page_loads_fast()
 {
-    // Başlangıç zamanını al
+ 
     $startTime = microtime(true);
 
-    // Ana sayfayı al
+
     $response = $this->get('/');
 
-    // Yanıtın başarılı olduğunu kontrol edin
+
     $response->assertStatus(200);
 
-    // Bitiş zamanını al
+
     $endTime = microtime(true);
 
-    // Yüklenme süresini hesapla
+
     $loadTime = $endTime - $startTime;
 
-    // Yüklenme süresinin belirli bir süre (örneğin 1 saniye) altında olduğunu kontrol et
+
     $this->assertLessThan(1, $loadTime, 'Home page took too long to load.');
 }
 
@@ -75,10 +75,7 @@ public function home_page_loads_fast()
 
 public function test_sql_injection()
 {
-    // Arrange: Creëer eventuele benodigde data of stel de omgeving in
-    // Bijvoorbeeld: $user = User::factory()->create();
-
-    // Act: Voer een kwaadaardige SQL-injectie uit
+ 
     $response = $this->post('/save_register', ['query' => "' OR 1=1 --"]);
 
     // Assert: Controleer of de applicatie correct reageert
@@ -136,15 +133,12 @@ public function test_form_submission_without_csrf_token()
     
     public function test_xss_protection()
     {
-        // Arrange: Creëer eventuele benodigde data of stel de omgeving in
-        // Bijvoorbeeld: $user = User::factory()->create();
-
-        // Act: Voer een kwaadaardige XSS-aanval uit
+      
         $response = $this->post('/save_register', [
             'comment' => '<script>alert("XSS")</script>',
         ]);
      
-        // Assert: Controleer of de applicatie correct reageert
+
         $response->assertDontSee('<script>alert("XSS")</script>');
         $response->assertSee(htmlspecialchars('<script>alert("XSS")</script>', ENT_QUOTES, 'UTF-8'));
     }
