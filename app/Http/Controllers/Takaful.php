@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
+
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -70,8 +73,42 @@ return $age;
  
  
 public function save_register_family(Request $request){
+
+    $validator = Validator::make($request->all(), [
+        'Naam_aanmelder' => 'required|max:255|min:2|',
+        'Geboortedatum_van_aanmelder' => 'required',
+        'Naam_van_echthgenote' => 'required|max:255',
+        'Geboortedatum_van_echtgenote'=> 'required',
+        'Adress'=> 'required',
+        'Telefoonnummer' => 'required|regex:/^[0-9]+$/',
+        'Email'=> 'required|email',
+
+    ],
+    [ 
+        'Naam_aanmelder.required' => 'Het veld "Naam aanmelder" is verplicht.',
+        'Naam_aanmelder.max' => 'Het veld "Naam aanmelder" mag maximaal 255 karakters bevatten.',
+        'Geboortedatum_van_aanmelder.required' => 'Het veld "Geboortedatum aanmelder" is verplicht.',
+        'Naam_van_echthgenote.required' => 'Het veld "Naam echtgenote" is verplicht.',
+        'Naam_van_echthgenote.max' => 'Het veld "Naam echtgenote" mag maximaal 255 karakters bevatten.',
+        'Geboortedatum_van_echtgenote.required' => 'Het veld "Geboortedatum echtgenote" is verplicht.',
+        'Adress.required' => 'Het veld "Adres" is verplicht.',
+        'Telefoonnummer.required' => 'Het veld "Telefoonnummer" is verplicht.',
+        'Telefoonnummer.regex' => 'Het telefoonnummer mag alleen cijfers bevatten.',
+        'Email.required' => 'Het veld "E-mail" is verplicht.',
+        'Email.email' => 'Het e-mailadres is ongeldig.',
+    ]
+);
+
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput(); 
+    }
+
+
+
+
+
+
     $data= $request->all();
-    echo "hello";
     $data["Accept_alle_voorwaarden"]="JA";
     $list=[];
     $birthday_of_registerer= $request->Geboortedatum_van_aanmelder;
@@ -157,6 +194,12 @@ public function save_register_family(Request $request){
         <p>Eenmalige bedrag aanmelder%s: <b> €%s</b><p>
         <p>Eenmalige bedrag echtgenote%s: <b> €%s</b><p><hr>
         <p>Totaal: <b>€%s</b></p>
+        <hr>
+        <p>U kunt het bedrag overmaken naar <strong> NL59INGB0008882315 t.n.v. Stichting CBVE
+
+
+ </strong>  IBAN-nummer</p>
+        <p>Vergeet niet uw naam erbij te vermelden</p>
         ',
         $type,$name_of_registerer,  $age_of_registerer,$name_of_partner,$age_of_partner, $annualy_cost, $desc_registerer,$one_off_amount_registerer, $desc_partner, $one_off_amount_partner,$totaal
         
@@ -228,6 +271,40 @@ public function save_register_family(Request $request){
     
  //register single
  public function save_register_single(Request $request){
+
+    $validator = Validator::make($request->all(), [
+        'Naam_aanmelder' => 'required|max:255|min:2|',
+        'Geboortedatum_van_aanmelder' => 'required',
+        'Adress'=> 'required',
+        'Telefoonnummer' => 'required|regex:/^[0-9]+$/',
+        'Email'=> 'required|email',
+
+    ],
+    [ 
+        'Naam_aanmelder.required' => 'Het veld "Naam aanmelder" is verplicht.',
+        'Naam_aanmelder.max' => 'Het veld "Naam aanmelder" mag maximaal 255 karakters bevatten.',
+        'Geboortedatum_van_aanmelder.required' => 'Het veld "Geboortedatum aanmelder" is verplicht.',
+        'Adress.required' => 'Het veld "Adres" is verplicht.',
+        'Telefoonnummer.required' => 'Het veld "Telefoonnummer" is verplicht.',
+        'Telefoonnummer.regex' => 'Het telefoonnummer mag alleen cijfers bevatten.',
+        'Email.required' => 'Het veld "E-mail" is verplicht.',
+        'Email.email' => 'Het e-mailadres is ongeldig.',
+    ]
+);
+
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput(); 
+    }
+
+
+
+
+
+
+
+
+
+
     $data= $request->all();
     $data["Accept_alle_voorwaarden"]="JA";
     $list=[];
@@ -347,12 +424,7 @@ public function save_register_family(Request $request){
     
      $table.="</table>";
     PDF::loadHTML($table)->save($name_of_registerer.".pdf");
-
-
-    //remove mail function
-    //$this->send_mail_user(public_path($name_of_registerer.".pdf"),$name_of_registerer);
-
-
+    $this->send_mail_user(public_path($name_of_registerer.".pdf"),$name_of_registerer);
     unlink($name_of_registerer.".pdf");
     return $response;    
         
