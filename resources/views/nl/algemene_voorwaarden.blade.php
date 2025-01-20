@@ -183,5 +183,5 @@ uitvaartverzorger gesloten overeenkomst dan wel van nadere overeenkomsten, die d
 het gevolg mochten zijn, zullen worden beslecht door de daartoe bevoegde rechter.
     </li>
 </ul>
-
+</div>
 @endsection
