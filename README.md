@@ -14,11 +14,11 @@ Volg deze stappen om de applicatie lokaal te draaien:
 
 1.  **Clone de repository:**
     ```bash
-    git clone [repository URL]
+    git clone https://github.com/hro-ict/takaful_CMGT.git
     ```
 2.  **Navigeer naar de projectmap:**
     ```bash
-    cd [projectmap]
+    cd takaful_CMGT
     ```
 3.  **Installeer de dependencies (bijv. met Composer voor PHP projecten):**
     ```bash
