@@ -4,9 +4,9 @@ Dit project is een afstudeerproject voor de opleiding Creative Media en Game Tec
 
 ## Beschrijving
 
-(Hier een korte, duidelijke beschrijving van de functionaliteit van de webapplicatie. Wat doet het? Wat is het doel? Voorbeeld:)
 
-Deze webapplicatie stelt de Stichting Collectief Begrafenisfonds voor Egyptenaren in staat om hun leden beter te informeren over hun diensten, zoals [noem specifieke diensten, bijv. begrafenisregelingen, repatriëring, etc.]. De applicatie biedt functionaliteiten zoals [noem specifieke functionaliteiten, bijv. informatiepagina's, contactformulier, ledenportaal, etc.].
+
+Deze webapplicatie stelt de Stichting Collectief Begrafenisfonds voor Egyptenaren in staat om hun leden beter te informeren over hun diensten
 
 ## Installatie
 
@@ -37,35 +37,15 @@ Volg deze stappen om de applicatie lokaal te draaien:
     ```bash
     php artisan migrate
     ```
-7.  **(Optioneel) Seed de database met testdata (Laravel):**
-    ```bash
-    php artisan db:seed
-    ```
-8.  **Start de development server:**
+
+7.  **Start de development server:**
     ```bash
     php artisan serve
     ```
 
-## Gebruik
-
-(Hier uitleg over hoe de applicatie te gebruiken. Bijvoorbeeld inloggen, navigeren, specifieke functionaliteiten. Voeg screenshots toe indien nodig.)
 
 ## Technologieën
 
-*   (Lijst van gebruikte technologieën, bijv. Laravel, PHP, JavaScript, HTML, CSS, database, etc.)
+*  Laravel, PHP, JavaScript, HTML, CSS
 
-## Testen
 
-(Uitleg over hoe tests uitgevoerd kunnen worden, bijvoorbeeld met PHPUnit in Laravel.)
-
-## Bijdragen
-
-(Uitleg over hoe anderen kunnen bijdragen aan het project, bijvoorbeeld via pull requests.)
-
-## Licentie
-
-(Vermeld de licentie van het project, bijvoorbeeld MIT, GPL, etc.)
-
-## Contact
-
-(Contactgegevens, bijvoorbeeld e-mailadres of GitHub profiel.)
