@@ -1,4 +1,4 @@
-# Projecttitel (Bijv. Webapplicatie voor Stichting Collectief Begrafenisfonds voor Egyptenaren)
+# Webapplicatie voor Stichting Collectief Begrafenisfonds voor Egyptenaren
 
 Dit project is een afstudeerproject voor de opleiding Creative Media en Game Technologie aan de Hogeschool Rotterdam. Het project betreft een webapplicatie ontwikkeld voor de Stichting Collectief Begrafenisfonds voor Egyptenaren.
 
