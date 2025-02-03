@@ -130,6 +130,59 @@ public function test_form_submission_without_csrf_token()
 
 
 
+
+//testen paginas
+
+ public function testHomePageIsAccessible()
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(200); // Controleer of de statuscode 200 is (OK)
+        
+    }
+
+
+ public function testKosten()
+    {
+        $response = $this->get('/kosten');
+
+        $response->assertStatus(200); // Controleer of de statuscode 200 is (OK)
+        
+    }
+
+
+
+     public function testRegister()
+    {
+        $response = $this->get('/register');
+
+        $response->assertStatus(200); // Controleer of de statuscode 200 is (OK)
+        
+    }
+
+    
+
+
+         public function testNews()
+    {
+        $response = $this->get('/news');
+
+        $response->assertStatus(200); // Controleer of de statuscode 200 is (OK)
+        
+    }
+
+
+
+       public function testContact()
+    {
+        $response = $this->get('/contact');
+
+        $response->assertStatus(200); // Controleer of de statuscode 200 is (OK)
+        
+    }
+    
+    //testen paginas
+    
     
     public function test_xss_protection()
     {
